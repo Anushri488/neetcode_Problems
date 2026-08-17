@@ -1,18 +1,18 @@
 class Solution {
+    public void solve(int index, List<List<Integer>> ans , List<Integer>current, int[]nums){
+        if(index==nums.length){
+            ans.add(new ArrayList<>(current));
+            return;
+        }
+        current.add(nums[index]);
+        solve(index+1,ans,current,nums);
+        current.remove(current.size()-1);
+        solve(index+1,ans,current,nums);
+    }
     public List<List<Integer>> subsets(int[] nums) {
-      List<List<Integer>> array=new ArrayList<>();
-      List<Integer> result= new ArrayList<>();
-      backtrack(array,result,nums,0);
-        return array;
+        List<Integer> current = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+        solve(0,ans,current,nums);
+        return ans;
     }
-    public void backtrack(List<List<Integer>>array,List<Integer>result,int[] nums,int start){
-      array.add(new ArrayList<>(result));
-      for(int i= start;i<nums.length;i++){
-        result.add(nums[i]);
-        backtrack(array,result,nums,i+1);
-        result.remove(result.size()-1);
-      }
-        
-    }
-    
 }
