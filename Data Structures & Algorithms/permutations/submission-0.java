@@ -16,11 +16,10 @@ class Solution {
         }
     }
     public List<List<Integer>> permute(int[] nums) {
-        List<Integer>current= new ArrayList<>();
-        List<List<Integer>> ans = new ArrayList<>();
-        boolean[]used = new boolean[nums.length];
+        boolean[]used=new boolean[nums.length];
+        List<Integer>current=new ArrayList<>();
+        List<List<Integer>>ans=new ArrayList<>();
         solve(used,current,ans,nums);
         return ans;
-        
     }
 }
