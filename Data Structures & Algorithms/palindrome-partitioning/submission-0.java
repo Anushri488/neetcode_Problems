@@ -5,12 +5,13 @@ class Solution {
             return;
         }
         for(int i=index;i<s.length();i++){
-            String strg = s.substring(index,i+1);
+            String strg=s.substring(index,i+1);
             if(ispalindrome(strg)){
                 current.add(strg);
                 solve(i+1,current,ans,s);
                 current.remove(current.size()-1);
             }
+            
         }
     }
     public boolean ispalindrome(String strg){
@@ -23,14 +24,13 @@ class Solution {
             left++;
             right--;
         }
+        
         return true;
-
     }
     public List<List<String>> partition(String s) {
         List<String>current = new ArrayList<>();
         List<List<String>>ans = new ArrayList<>();
         solve(0,current,ans,s);
         return ans;
-        
     }
 }
