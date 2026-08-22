@@ -5,10 +5,10 @@ class Solution {
             return;
         }
         for(int i=0;i<nums.length;i++){
-            if(i>0 && nums[i]==nums[i-1] && !used[i-1]){
+            if(used[i]==true){
                 continue;
             }
-            if(used[i]==true){
+            if(i>0 && nums[i]==nums[i-1] && !used[i-1]){
                 continue;
             }
             used[i]=true;
@@ -20,9 +20,9 @@ class Solution {
     }
     public List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);
-        List<Integer>current = new ArrayList<>();
-        List<List<Integer>> ans = new ArrayList<>();
         boolean[]used = new boolean[nums.length];
+        List<Integer>current= new ArrayList<>();
+        List<List<Integer>>ans = new ArrayList<>();
         solve(used,current,ans,nums);
         return ans;
     }
