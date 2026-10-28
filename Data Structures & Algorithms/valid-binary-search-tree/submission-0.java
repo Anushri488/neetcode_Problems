@@ -16,27 +16,15 @@
 
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        if(root.left==null && root.right == null){
+        return isValid(root,Long.MAX_VALUE,Long.MIN_VALUE);
+    }
+    public static boolean isValid(TreeNode root, long max , long min){
+        if(root == null){
             return true;
         }
-        List<TreeNode> path =new ArrayList<>();
-        List<TreeNode> result = inorder (root, path);
-        for(int i =1; i<result.size();i++){
-            if(result.get(i-1).val >= result.get(i).val ){
-                return false;
-            }
+        if(root.val <= min || root.val >= max){
+            return false;
         }
-        return true;
-
-
-    }
-    public List<TreeNode> inorder(TreeNode root,List<TreeNode> path){
-        TreeNode curr=root;
-        if (curr!=null){
-            inorder(root.left,path);
-            path.add(curr);
-            inorder(root.right,path);
-        }
-        return path;
+        return isValid(root.left,root.val,min) && isValid(root.right,max,root.val);
     }
 }
